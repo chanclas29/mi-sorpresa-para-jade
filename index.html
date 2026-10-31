@@ -10,11 +10,12 @@
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;overflow-x:hidden;color:var(--ink);font-family:"Trebuchet MS",system-ui,sans-serif;background:radial-gradient(circle at 15% 15%,#fff 0 5%,transparent 28%),linear-gradient(135deg,#ffedf5,#f0e8ff 55%,#fff6fb)}
 .bg{position:fixed;inset:0;pointer-events:none;overflow:hidden}.orb{position:absolute;width:260px;height:260px;border-radius:50%;filter:blur(55px);opacity:.35;background:#efaed0}.orb.a{top:-100px;left:-90px}.orb.b{right:-100px;bottom:-100px;background:#bca5ef}
-.card{position:relative;z-index:1;width:min(100%,640px);padding:clamp(23px,6vw,46px);text-align:center;border:1px solid #fff;border-radius:30px;background:#ffffffc9;backdrop-filter:blur(12px);box-shadow:0 20px 65px #86639a25}
+.card{position:relative;z-index:1;width:min(100%,680px);padding:clamp(23px,6vw,46px);text-align:center;border:1px solid #fff;border-radius:30px;background:#ffffffc9;backdrop-filter:blur(12px);box-shadow:0 20px 65px #86639a25}
 .pill{display:inline-block;border-radius:30px;padding:8px 15px;background:#f8e6f1;color:#986d9e;font-size:.82rem;letter-spacing:.04em}
-h1{margin:17px 0 8px;font-size:clamp(2.3rem,8vw,3.8rem);color:#a177b0}.intro{line-height:1.7;color:#806c88}
+h1{margin:17px 0 8px;font-size:clamp(2.1rem,7vw,3.6rem);color:#a177b0}.intro{line-height:1.7;color:#806c88}
 button{border:0;border-radius:30px;padding:14px 22px;margin:10px 5px 0;background:linear-gradient(110deg,#eaa9c8,#b39be4);color:white;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 8px 20px #b28bbd42;transition:transform .2s,box-shadow .2s}
 button:hover{transform:translateY(-2px);box-shadow:0 11px 24px #b28bbd60}button:focus-visible{outline:3px solid #78518c;outline-offset:3px}
+button:disabled{opacity:.65;cursor:default;transform:none}
 .envelope-area{margin:28px auto 5px;max-width:300px;cursor:pointer;user-select:none}
 .envelope{position:relative;width:230px;height:150px;margin:auto;background:#eebbd3;border-radius:8px;box-shadow:0 12px 25px #a878a833;transition:transform .5s}
 .envelope:before{content:"";position:absolute;inset:0;background:#f7d7e6;clip-path:polygon(0 0,50% 58%,100% 0);transform-origin:top;transition:transform .75s;z-index:3}
@@ -23,10 +24,10 @@ button:hover{transform:translateY(-2px);box-shadow:0 11px 24px #b28bbd60}button:
 .letter{position:absolute;z-index:1;left:10px;right:10px;bottom:8px;height:125px;padding:15px 8px;background:#fffafd;border-radius:8px;display:grid;place-items:center;color:#a174aa;font-weight:700;transition:transform .95s cubic-bezier(.2,.8,.2,1)}
 .envelope.open:before{transform:rotateX(180deg);z-index:0}.envelope.open .letter{transform:translateY(-100px);z-index:4}.envelope.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.4)}
 .hint{font-size:.9rem;color:#9b83a2;margin-top:13px}
-.message-box,.question-box{display:none;margin:30px auto 0;padding:25px 22px;background:#fffafd;border:1px solid #f2ddeb;border-radius:22px;box-shadow:0 10px 30px #9f76a21a}
-.message-box.show,.question-box.show{display:block;animation:rise .8s ease both}
+.message-box,.memory-box,.question-box{display:none;margin:30px auto 0;padding:25px 22px;background:#fffafd;border:1px solid #f2ddeb;border-radius:22px;box-shadow:0 10px 30px #9f76a21a}
+.message-box.show,.memory-box.show,.question-box.show{display:block;animation:rise .8s ease both}
 @keyframes rise{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
-.message-box h2,.question-box h2{margin:0 0 12px;color:#a177b0}
+.message-box h2,.memory-box h2,.question-box h2{margin:0 0 12px;color:#a177b0}
 .typed{min-height:92px;line-height:1.9;font-size:1.15rem;white-space:pre-line;color:#755d80}
 .caret{display:inline-block;width:2px;height:1.1em;background:#a177b0;vertical-align:-.15em;margin-left:3px;animation:blink .8s steps(2,start) infinite}
 @keyframes blink{to{visibility:hidden}}
@@ -38,6 +39,21 @@ button:hover{transform:translateY(-2px);box-shadow:0 11px 24px #b28bbd60}button:
 @keyframes float{15%{opacity:.85}100%{transform:translateY(-115vh) rotate(35deg);opacity:0}}
 .answer{font-size:1.05rem;line-height:1.7;color:#806c88;min-height:35px}
 .hidden{display:none!important}
+.memory-intro{line-height:1.7;color:#806c88}
+.memory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+.memory-card{min-width:0}
+.reveal-btn{width:100%;min-height:125px;border-radius:18px;padding:15px 8px;background:linear-gradient(145deg,#e9d9fb,#f9d9e8);color:#8b6798;box-shadow:inset 0 0 0 1px #fff,0 8px 18px #b28bbd24}
+.gift-icon{display:block;font-size:2.7rem;margin-bottom:8px}
+.photo-frame{display:none;background:white;padding:9px 9px 14px;border-radius:8px;box-shadow:0 8px 22px #87688b2b;transform:rotate(-2deg);animation:photoReveal .8s cubic-bezier(.2,.8,.2,1) both}
+.memory-card:nth-child(2) .photo-frame{transform:rotate(2deg)}
+.photo-frame.show{display:block}
+.photo-frame img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
+.photo-caption{font-family:"Trebuchet MS",sans-serif;color:#94769b;font-size:.85rem;margin-top:9px}
+@keyframes photoReveal{from{opacity:0;transform:translateY(22px) scale(.82) rotate(0)}to{opacity:1;transform:translateY(0) scale(1) rotate(-2deg)}}
+.memory-card:nth-child(2) .photo-frame.show{animation-name:photoRevealSecond}
+@keyframes photoRevealSecond{from{opacity:0;transform:translateY(22px) scale(.82) rotate(0)}to{opacity:1;transform:translateY(0) scale(1) rotate(2deg)}}
+.progress{font-size:.88rem;color:#9a83a0;margin-top:16px}
+@media(max-width:420px){.memory-grid{gap:9px}.memory-box{padding:20px 14px}.photo-frame{padding:6px 6px 11px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -60,8 +76,34 @@ button:hover{transform:translateY(-2px);box-shadow:0 11px 24px #b28bbd60}button:
   <section class="message-box" id="messageBox" aria-live="polite">
     <h2>Para ti, Jade 🌸</h2>
     <div class="typed"><span id="typed"></span><span class="caret" id="caret"></span></div>
-    <div class="sign">Con cariño, Adrian el que esta loquito por ti 💚. </div>
+    <div class="sign">Con cariño, Adrian el que esta loquito por ti 💚.</div>
     <p class="end">Espero que esta pequeña sorpresa te saque una sonrisa. 🥰</p>
+  </section>
+
+  <section class="memory-box" id="memoryBox">
+    <h2>Tengo dos recuerdos para ti 💗</h2>
+    <p class="memory-intro">Preparé dos fotitos. Toca cada regalito para descubrirlas, una por una. 🥺</p>
+    <div class="memory-grid">
+      <div class="memory-card" id="memoryCard1">
+        <button class="reveal-btn" type="button" id="reveal1">
+          <span class="gift-icon">🎁</span>Descubre el primer recuerdo
+        </button>
+        <div class="photo-frame" id="frame1">
+          <img src="recuerdo-1.png" alt="Primer recuerdo de Jade y Adrian">
+          <div class="photo-caption">Un momentito para guardar 💜</div>
+        </div>
+      </div>
+      <div class="memory-card" id="memoryCard2">
+        <button class="reveal-btn" type="button" id="reveal2">
+          <span class="gift-icon">🎀</span>Descubre el segundo recuerdo
+        </button>
+        <div class="photo-frame" id="frame2">
+          <img src="recuerdo-2.png" alt="Segundo recuerdo de Jade y Adrian">
+          <div class="photo-caption">Otro recuerdo bonito 🌷</div>
+        </div>
+      </div>
+    </div>
+    <p class="progress" id="progress">Has descubierto 0 de 2 recuerdos 💕</p>
   </section>
 
   <section class="question-box" id="questionBox" aria-live="polite">
@@ -83,10 +125,12 @@ const btn=document.getElementById('openBtn');
 const box=document.getElementById('messageBox');
 const typed=document.getElementById('typed');
 const caret=document.getElementById('caret');
+const memoryBox=document.getElementById('memoryBox');
 const question=document.getElementById('questionBox');
 const song=document.getElementById('song');
 const message='Quiero que sepas lo especial que eres para mí y lo mucho que quiero estar contigo en todo momento. ❤️';
 let opened=false;
+let discovered=0;
 
 function floatingHeart(){
   const e=document.createElement('span');
@@ -113,23 +157,6 @@ function sparkleBurst(){
     setTimeout(()=>s.remove(),1800);
   }
 }
-function typeMessage(){
-  let i=0;
-  const timer=setInterval(()=>{
-    typed.textContent=message.slice(0,i+1);
-    if(message[i]===' '||'❤️💜'.includes(message[i])) sparkleBurstSoft();
-    i++;
-    if(i>=message.length){
-      clearInterval(timer);caret.classList.add('hidden');
-      setTimeout(()=>{
-        question.classList.add('show');
-        question.scrollIntoView({behavior:'smooth',block:'nearest'});
-        sparkleBurst();
-        for(let n=0;n<18;n++)setTimeout(floatingHeart,n*120);
-      },900);
-    }
-  },78);
-}
 function sparkleBurstSoft(){
   if(Math.random()>.16)return;
   const s=document.createElement('span');s.className='sparkle';s.textContent='✧';
@@ -137,6 +164,23 @@ function sparkleBurstSoft(){
   s.style.setProperty('--dx',(Math.random()*60-30)+'px');
   s.style.setProperty('--dy',(-25-Math.random()*55)+'px');
   s.style.fontSize='18px';document.body.appendChild(s);setTimeout(()=>s.remove(),1800);
+}
+function typeMessage(){
+  let i=0;
+  const timer=setInterval(()=>{
+    typed.textContent=message.slice(0,i+1);
+    if(message[i]===' '||'❤️💜'.includes(message[i]))sparkleBurstSoft();
+    i++;
+    if(i>=message.length){
+      clearInterval(timer);caret.classList.add('hidden');
+      setTimeout(()=>{
+        memoryBox.classList.add('show');
+        memoryBox.scrollIntoView({behavior:'smooth',block:'nearest'});
+        sparkleBurst();
+        for(let n=0;n<14;n++)setTimeout(floatingHeart,n*130);
+      },900);
+    }
+  },78);
 }
 async function openLetter(){
   if(opened)return;opened=true;
@@ -152,9 +196,30 @@ async function openLetter(){
   try{await song.play();document.getElementById('musicNote').textContent='♫ Esta canción es para acompañar tu sorpresa 💜';}
   catch(e){document.getElementById('musicNote').textContent='♫ La música está lista; si no inicia, comprueba que mi-cancion.mp3 esté junto a index.html.';}
 }
+function revealMemory(number){
+  const frame=document.getElementById('frame'+number);
+  const reveal=document.getElementById('reveal'+number);
+  if(frame.classList.contains('show'))return;
+  frame.classList.add('show');
+  reveal.classList.add('hidden');
+  discovered++;
+  document.getElementById('progress').textContent=`Has descubierto ${discovered} de 2 recuerdos 💕`;
+  sparkleBurst();
+  for(let n=0;n<12;n++)setTimeout(floatingHeart,n*100);
+  if(discovered===2){
+    setTimeout(()=>{
+      question.classList.add('show');
+      question.scrollIntoView({behavior:'smooth',block:'nearest'});
+      sparkleBurst();
+      for(let n=0;n<20;n++)setTimeout(floatingHeart,n*110);
+    },900);
+  }
+}
 area.addEventListener('click',openLetter);
 area.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLetter();}});
 btn.addEventListener('click',openLetter);
+document.getElementById('reveal1').addEventListener('click',()=>revealMemory(1));
+document.getElementById('reveal2').addEventListener('click',()=>revealMemory(2));
 function answerSmile(text){
   document.getElementById('answers').classList.add('hidden');
   const reply=document.getElementById('reply');reply.textContent=text;reply.classList.remove('hidden');
