@@ -1,0 +1,20 @@
+SORPRESA INTERACTIVA PARA JADE 💜
+
+Incluye:
+- index.html: página romántica con sobre interactivo y carta animada.
+- mi-cancion.mp3: la canción que proporcionaste.
+
+PARA PROBARLA:
+Abre index.html en un navegador. Toca el sobre o el botón para abrir la carta y comenzar la música.
+
+PARA PUBLICAR GRATIS CON GITHUB PAGES:
+1. Crea una cuenta en https://github.com/
+2. Crea un repositorio público llamado sorpresa-para-jade.
+3. Sube index.html y mi-cancion.mp3 a la raíz del repositorio.
+4. Entra en Settings > Pages.
+5. En Build and deployment elige Deploy from a branch.
+6. Selecciona main y /(root), y guarda.
+7. Espera a que GitHub Pages publique el enlace.
+
+La canción empieza después del toque, porque los navegadores suelen bloquear la reproducción automática.
+Asegúrate de tener permiso para compartir el audio públicamente.
